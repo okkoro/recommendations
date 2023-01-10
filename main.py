@@ -1,13 +1,12 @@
 from flask import Flask, jsonify
 import firebase_admin
 from firebase_admin import firestore, credentials
-from dotenv import load_dotenv
 import os
 
-path = '/home/ClementCadieux/recommendations'
-
-project_folder = os.path.expanduser(path)  # adjust as appropriate
-load_dotenv(os.path.join(project_folder, '.env'))
+# path = '/home/ClementCadieux/recommendations'
+#
+# project_folder = os.path.expanduser(path)  # adjust as appropriate
+# load_dotenv(os.path.join(project_folder, '.env'))
 api = Flask(__name__)
 
 db_key_path = os.environ.get("DB_KEY_PATH")
