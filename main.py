@@ -17,5 +17,9 @@ movies_ref = db.collection(u"movies")
 
 @api.route("/api/recommendation")
 def getMovie():
-    movie = movies_ref.document("100").get()
-    return jsonify(movie.to_dict()), 200
+    ids = ["100", "10023", "10054", "10063", "10069", "10072", "10081", "10105", "101173", "10133"]
+    movies = []
+    for movieId in ids:
+        movies.append(movies_ref.document(movieId).get().to_dict())
+
+    return jsonify(movies), 200
