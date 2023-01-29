@@ -24,7 +24,7 @@ class GetMovieTestCase(BaseCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.json), 10)
         for movie in response.json:
-            self.assertNotIn(movie, bannedIds)
+            self.assertNotIn(movie["id"], bannedIds)
 
 
 if __name__ == '__main__':
