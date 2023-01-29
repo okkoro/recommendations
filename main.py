@@ -35,7 +35,7 @@ def getMovies(uid):
         movieId = movie.to_dict()['id']
 
         if movieId not in bannedIds:
-            recomms.append(movieId)
+            recomms.append(movie.to_dict())
 
         if len(recomms) >= 10:
             return jsonify(recomms), 200
