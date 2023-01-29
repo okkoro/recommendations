@@ -1,4 +1,5 @@
 import unittest
+
 from dotenv import load_dotenv
 import os
 
@@ -16,11 +17,14 @@ class BaseCase(unittest.TestCase):
 
 class GetMovieTestCase(BaseCase):
     def test_get_movie(self):
-        ids = [100, 10023, 10054, 10063, 10069, 10072, 10081, 10105, 101173, 10133]
-        response = self.api.get("/api/recommendation")
+        uid = os.environ.get("CLEMENT_USER_ID")
+        bannedIds = {150, 10063, 153}
+
+        response = self.api.get("/api/recommendation/" + uid)
         self.assertEqual(response.status_code, 200)
-        for i in range(0, len(ids)):
-            self.assertEqual(ids[i], response.json[i]['id'])
+        self.assertEqual(len(response.json), 10)
+        for movie in response.json:
+            self.assertNotIn(movie, bannedIds)
 
 
 if __name__ == '__main__':
