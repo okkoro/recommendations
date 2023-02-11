@@ -3,7 +3,9 @@ import firebase_admin
 from firebase_admin import firestore, credentials
 from UserRepository import UserRepo
 from MovieRepository import MovieRepo
+from ReviewRepository import ReviewRepo
 from MovieApiService import MovieService
+
 import os
 
 api = Flask(__name__)
@@ -17,6 +19,7 @@ app = firebase_admin.initialize_app(cred)
 db = firestore.client()
 userRepo = UserRepo.getOrCreate(db)
 movieRepo = MovieRepo.getOrCreate(db)
+reviewRepo = ReviewRepo.getOrCreate(db)
 movieService = MovieService.getOrCreate(api_link, api_key)
 
 
