@@ -14,5 +14,5 @@ class ReviewRepo:
         return ReviewRepo.shared
 
     def getReviews(self, uid):
-        reviews = self.reviews_ref.document(uid).get().to_dict()
+        reviews = self.reviews_ref.where(u'userId', u'==', uid).get()
         return reviews
