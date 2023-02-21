@@ -42,7 +42,7 @@ def getMovies(uid):
 
     for review in reviews:
         reviewDict = review.to_dict()
-        score = reviewDict["score"]
+        score = int(reviewDict["score"])
         movieId = reviewDict["movieId"]
 
         similarMovies = movieService.getSimilar(movieId)
